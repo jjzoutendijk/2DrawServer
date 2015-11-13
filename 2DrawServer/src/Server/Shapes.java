@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
-public class Shapes implements ShapeServices, Serializable{
+public class Shapes implements ShapeInterface, Serializable{
 	private ArrayList<Shape> shapes = new ArrayList<Shape>();
 
 	
