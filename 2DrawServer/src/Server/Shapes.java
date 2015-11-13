@@ -13,6 +13,11 @@ public class Shapes implements ShapeServices, Serializable{
 		shapes.add(s);
 	}
 	
+	@Override
+	public ArrayList<Shape> getShapes() throws RemoteException{
+		return this.shapes;
+	}
+	
 	/*
 	public int getSize(){
 		return this.shapes.size();

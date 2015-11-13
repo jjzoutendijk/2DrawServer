@@ -20,15 +20,13 @@ public class ShapeServiceImplementation implements ShapeServices {
         }
        
         try {
-            String name = "ShapeServices";
             ShapeServices ss = new ShapeServiceImplementation();
-            ShapeServices stub =
-                (ShapeServices) UnicastRemoteObject.exportObject(ss, 3006);
+            ShapeServices stub = (ShapeServices) UnicastRemoteObject.exportObject(ss, 3000);
             Registry registry = LocateRegistry.getRegistry();
             registry.rebind("rmi://localhost/ABC", stub);
             System.out.println("service bound");
         } catch (Exception e) {
-            System.err.println("service exception:");
+            System.err.println("Server service exception:");
             e.printStackTrace();
         }
     }
@@ -37,6 +35,12 @@ public class ShapeServiceImplementation implements ShapeServices {
 	@Override
 	public void addShape(Shape s) throws RemoteException {
 		System.out.println("Added: " + s);
+	}
+	
+	@Override
+	public ArrayList<Shape> getShapes() throws RemoteException{
+		System.out.println("return Shapes");
+		return new ArrayList<Shape>();
 	}
 
 
