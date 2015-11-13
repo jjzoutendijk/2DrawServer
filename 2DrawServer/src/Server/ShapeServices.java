@@ -8,5 +8,4 @@ import java.util.ArrayList;
 
 public interface ShapeServices extends Remote, Serializable  {
 	public void addShape(Shape S) throws RemoteException;
-	public ArrayList<Shape> getShapes() throws RemoteException;;
 }

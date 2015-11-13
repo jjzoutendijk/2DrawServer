@@ -9,11 +9,6 @@ public class Shapes implements ShapeServices, Serializable{
 
 	
 	@Override
-	public ArrayList<Shape> getShapes() throws RemoteException {
-		return shapes;
-	}
-	
-	@Override
 	public void addShape(Shape s) throws RemoteException {
 		shapes.add(s);
 	}
