@@ -11,7 +11,7 @@ import java.util.ArrayList;
 /**
  * Run with the following VM arguments:
  * 
- * -Djava.security.policy=file:${workspace_loc}/RMIClientSide/security.policy
+ * -Djava.security.policy=file:${workspace_loc}/2DrawServer/server.policy
  * -Djava.rmi.server.codebase=file:${workspace_loc}/2DrawServer/bin/
  * 
  * Policy files:
@@ -19,14 +19,16 @@ import java.util.ArrayList;
  *    	permission java.security.AllPermission;
  *    };
  * 
- * Programm for checking for RMI registry:
+ * Program for checking for RMI registry:
  * http://marxsoftware.blogspot.nl/2009/06/viewing-names-bound-to-rmi-registry.html
  * 
  * @author Student
  *
  */
 public class ShapeServer implements ShapeInterface {
-
+	
+	private ArrayList<Shape> shapesList = new ArrayList<Shape>();
+	
     public ShapeServer() {
         super();
     }
@@ -36,37 +38,28 @@ public class ShapeServer implements ShapeInterface {
          if (System.getSecurityManager() == null) {
             System.setSecurityManager(new SecurityManager());
         }
-       
-//        try {
-//            ShapeServices ss = new ShapeServiceImplementation();
-//            ShapeServices stub = (ShapeServices) UnicastRemoteObject.exportObject(ss, 3000);
-//            Registry registry = LocateRegistry.getRegistry();
-//            registry.rebind("rmi://localhost/ABC", stub);
-//            System.out.println("service bound");
-//        } catch (Exception e) {
-//            System.err.println("Server service exception:");
-//            e.printStackTrace();
-//        }
-         
-		   try {
-			  // System.setSecurityManager(new SecurityManager());
-			   
-			   Shapes Hello = new Shapes();	
-			   Shape s1 = new Circle();
-			   Hello.addShape(s1);
-			   Naming.rebind("rmi://localhost/Shapes", Hello);
-			   ShapeInterface ss = new ShapeServer();
-	           ShapeInterface stub = (ShapeInterface) UnicastRemoteObject.exportObject(ss, 3000);
-	           Registry registry = LocateRegistry.getRegistry();
-			   System.out.println("Shape Server is ready.");
-			   }catch (Exception e) {
-				   System.out.println("Shape Server failed: " + e);
-				}
-		   }
+
+     
+	   try {
+		  // System.setSecurityManager(new SecurityManager());
+		   
+		   Shapes Hello = new Shapes();	
+		   Shape s1 = new Circle();
+		   Hello.addShape(s1);
+		   Naming.rebind("rmi://localhost/Shapes", Hello);
+		   ShapeInterface ss = new ShapeServer();
+           ShapeInterface stub = (ShapeInterface) UnicastRemoteObject.exportObject(ss, 3000);
+           Registry registry = LocateRegistry.getRegistry();
+		   System.out.println("Shape Server is ready.");
+		   }catch (Exception e) {
+			   System.out.println("Shape Server failed: " + e);
+			}
+	   }
 
 
 	@Override
 	public void addShape(Shape S) throws RemoteException {
+		shapesList.add(S);
 		System.out.println("Added Shape");
 		
 	}
