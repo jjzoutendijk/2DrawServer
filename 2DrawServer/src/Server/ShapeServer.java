@@ -16,9 +16,12 @@ import java.util.ArrayList;
  * -Djava.rmi.server.codebase=file:${workspace_loc}/2DrawServer/bin/
  * 
  * Policy files:
+ * grant {
+ *    	permission java.security.AllPermission;
+ *    };
  * 
- * 
- * 
+ * Programm for checking for RMI registry:
+ * http://marxsoftware.blogspot.nl/2009/06/viewing-names-bound-to-rmi-registry.html
  * 
  * @author Student
  *
