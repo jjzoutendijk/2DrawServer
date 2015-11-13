@@ -1,7 +1,6 @@
 package Server;
 
 import java.rmi.Naming;
-import java.rmi.RMISecurityManager;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
@@ -51,9 +50,11 @@ public class ShapeServer implements ShapeInterface {
          
 		   try {
 			  // System.setSecurityManager(new SecurityManager());
- 
-			   Shapes Hello = new Shapes();			   		   
-			   Naming.rebind("rmi://localhost/Shape", Hello);
+			   
+			   Shapes Hello = new Shapes();	
+			   Shape s1 = new Circle();
+			   Hello.addShape(s1);
+			   Naming.rebind("rmi://localhost/Shapes", Hello);
 			   ShapeInterface ss = new ShapeServer();
 	           ShapeInterface stub = (ShapeInterface) UnicastRemoteObject.exportObject(ss, 3000);
 	           Registry registry = LocateRegistry.getRegistry();
@@ -66,7 +67,7 @@ public class ShapeServer implements ShapeInterface {
 
 	@Override
 	public void addShape(Shape S) throws RemoteException {
-		// TODO Auto-generated method stub
+		System.out.println("Added Shape");
 		
 	}
 
