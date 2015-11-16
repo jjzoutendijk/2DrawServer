@@ -42,17 +42,17 @@ public class ShapeServer implements ShapeInterface {
      
 	   try {
 		  // System.setSecurityManager(new SecurityManager());
-		   
+		   Registry registry = LocateRegistry.getRegistry();
 		   Shapes Hello = new Shapes();	
 		   Shape s1 = new Circle();
 		   Hello.addShape(s1);
-		   Naming.rebind("rmi://localhost/Shapes", Hello);
 		   ShapeInterface ss = new ShapeServer();
-           ShapeInterface stub = (ShapeInterface) UnicastRemoteObject.exportObject(ss, 3000);
-           Registry registry = LocateRegistry.getRegistry();
+           ShapeInterface stub = (ShapeInterface) UnicastRemoteObject.exportObject(ss, 3001);
+           Naming.rebind("rmi://localhost/Shapes", Hello);
 		   System.out.println("Shape Server is ready.");
 		   }catch (Exception e) {
 			   System.out.println("Shape Server failed: " + e);
+			   e.printStackTrace();
 			}
 	   }
 
