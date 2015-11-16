@@ -119,23 +119,23 @@ public abstract class Shape implements Serializable {
 
 
 	public String getColorString() {
-		if(this.color == color.RED){
+		if(this.color.equals(Color.RED)){
 			return "red";
 		}
-		else if(this.color == color.BLUE){
+		else if(this.color.equals(Color.BLUE)){
 			return "blue"; 
 		}
-		else if(this.color == color.GREEN){
+		else if(this.color.equals(Color.GREEN)){
 			return "green";
 		}
-		else if(this.color == color.BLACK){
-			return "black";
-		} else
+		else if(this.color.equals(Color.WHITE)){
 			return "white";
+		} else
+			return "black";
 	}
 	
 	public String toString(){
-		return "This shape is a: " + this.getType() + " at: " + this.getX() + "," +this.getY();
+		return "This shape is a: " + this.getType() + " at: " + this.getX() + "," +this.getY()+ " Color & fill style: " + this.getColorString() + " " + this.getFillStyle();
 	}
 	
 }

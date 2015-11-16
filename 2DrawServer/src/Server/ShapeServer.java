@@ -38,10 +38,7 @@ public class ShapeServer {
          if (System.getSecurityManager() == null) {
             System.setSecurityManager(new SecurityManager());
         }
-
-     
 	   try {
-		  // System.setSecurityManager(new SecurityManager());
 		   Registry registry = LocateRegistry.getRegistry();
 		   Shapes Hello = new Shapes();	
            ShapeInterface stub = (ShapeInterface) UnicastRemoteObject.exportObject(Hello, 3001);
@@ -51,24 +48,5 @@ public class ShapeServer {
 			   System.out.println("Shape Server failed: " + e);
 			   e.printStackTrace();
 			}
-	   }
-
-/*
-	@Override
-	public void addShape(Shape S) throws RemoteException {
-		shapesList.add(S);
-		System.out.println("Added Shape");
-		
-	}
-
-
-	@Override
-	public ArrayList<Shape> getShapes() throws RemoteException {
-		System.out.println("get shape");
-		return null;
-	}
-    
-  */ 
-
-
+    }
 }

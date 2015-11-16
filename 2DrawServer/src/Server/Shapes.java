@@ -25,7 +25,11 @@ public class Shapes implements ShapeInterface, Serializable{
 		return shape.getType();
 	}
 
-
+	@Override
+	public String getColorString(int i) throws RemoteException{
+		Shape shape = shapesList.get(i);
+		return shape.getColorString();
+	}
 	
 	/*
 	public int getSize(){
