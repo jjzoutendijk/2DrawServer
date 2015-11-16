@@ -1,6 +1,7 @@
 package Server;
 
 import java.awt.Color;
+import java.io.Serializable;
 
 
 /**
@@ -10,7 +11,7 @@ import java.awt.Color;
  * @version 1.0
  * 
  */
-public abstract class Shape {
+public abstract class Shape implements Serializable {
 	/* ------------------------------------------------------------------------------------------------------
 	 * Class Variables
 	 * ------------------------------------------------------------------------------------------------------
@@ -29,7 +30,7 @@ public abstract class Shape {
 	 */
 	public Shape(){
 		this.x = 10;
-		this.y = 10;		
+		this.y = 10;
 		
 		// Set the standard style, color and size
 		fillStyle = FillStyle.EMPTY;
@@ -133,5 +134,8 @@ public abstract class Shape {
 			return "white";
 	}
 	
+	public String toString(){
+		return "This shape is a: " + this.getType() + " at: " + this.getX() + "," +this.getY();
+	}
 	
 }

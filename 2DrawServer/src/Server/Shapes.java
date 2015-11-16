@@ -5,18 +5,27 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 public class Shapes implements ShapeInterface, Serializable{
-	private ArrayList<Shape> shapes = new ArrayList<Shape>();
+	private ArrayList<Shape> shapesList = new ArrayList<Shape>();
 
 	
 	@Override
 	public void addShape(Shape s) throws RemoteException {
-		shapes.add(s);
+		System.out.println("Info on received shape: "+ s.toString());
+		shapesList.add(s);
 	}
 	
 	@Override
 	public ArrayList<Shape> getShapes() throws RemoteException{
-		return this.shapes;
+		return this.shapesList;
 	}
+
+	@Override
+	public String getType(int i) throws RemoteException {
+		Shape shape = shapesList.get(i);
+		return shape.getType();
+	}
+
+
 	
 	/*
 	public int getSize(){

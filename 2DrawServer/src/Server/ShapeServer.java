@@ -11,8 +11,8 @@ import java.util.ArrayList;
 /**
  * Run with the following VM arguments:
  * 
- * -Djava.security.policy=file:${workspace_loc}/2DrawServer/server.policy
- * -Djava.rmi.server.codebase=file:${workspace_loc}/2DrawServer/bin/
+ * -Djava.security.policy=file:///C:\Users\Student\Documents\2DrawServer\2DrawServer\server.policy
+ * -Djava.rmi.server.codebase=file:/C:\Users\Student\Documents\2DrawServer\2DrawServer\bin\
  * 
  * Policy files:
  * grant {
@@ -25,7 +25,7 @@ import java.util.ArrayList;
  * @author Student
  *
  */
-public class ShapeServer implements ShapeInterface {
+public class ShapeServer {
 	
 	private ArrayList<Shape> shapesList = new ArrayList<Shape>();
 	
@@ -44,10 +44,7 @@ public class ShapeServer implements ShapeInterface {
 		  // System.setSecurityManager(new SecurityManager());
 		   Registry registry = LocateRegistry.getRegistry();
 		   Shapes Hello = new Shapes();	
-		   Shape s1 = new Circle();
-		   Hello.addShape(s1);
-		   ShapeInterface ss = new ShapeServer();
-           ShapeInterface stub = (ShapeInterface) UnicastRemoteObject.exportObject(ss, 3001);
+           ShapeInterface stub = (ShapeInterface) UnicastRemoteObject.exportObject(Hello, 3001);
            Naming.rebind("rmi://localhost/Shapes", Hello);
 		   System.out.println("Shape Server is ready.");
 		   }catch (Exception e) {
@@ -56,7 +53,7 @@ public class ShapeServer implements ShapeInterface {
 			}
 	   }
 
-
+/*
 	@Override
 	public void addShape(Shape S) throws RemoteException {
 		shapesList.add(S);
@@ -67,11 +64,11 @@ public class ShapeServer implements ShapeInterface {
 
 	@Override
 	public ArrayList<Shape> getShapes() throws RemoteException {
-		// TODO Auto-generated method stub
+		System.out.println("get shape");
 		return null;
 	}
     
-   
+  */ 
 
 
 }
