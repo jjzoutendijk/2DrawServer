@@ -1,5 +1,6 @@
 package Server;
 
+import java.awt.Color;
 import java.io.Serializable;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
@@ -26,10 +27,12 @@ public class Shapes implements ShapeInterface, Serializable{
 	}
 
 	@Override
-	public String getColorString(int i) throws RemoteException{
+	public Color getColor(int i) throws RemoteException {
 		Shape shape = shapesList.get(i);
-		return shape.getColorString();
+		return shape.getColor();
 	}
+	
+	
 	
 	/*
 	public int getSize(){

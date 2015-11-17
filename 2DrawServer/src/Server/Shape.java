@@ -116,26 +116,9 @@ public abstract class Shape implements Serializable {
 			this.height -= 2;
 		}
 	}
-
-
-	public String getColorString() {
-		if(this.color.equals(Color.RED)){
-			return "red";
-		}
-		else if(this.color.equals(Color.BLUE)){
-			return "blue"; 
-		}
-		else if(this.color.equals(Color.GREEN)){
-			return "green";
-		}
-		else if(this.color.equals(Color.WHITE)){
-			return "white";
-		} else
-			return "black";
-	}
 	
 	public String toString(){
-		return "This shape is a: " + this.getType() + " at: " + this.getX() + "," +this.getY()+ " Color & fill style: " + this.getColorString() + " " + this.getFillStyle();
+		return "This shape is a: " + this.getType() + " at: " + this.getX() + "," +this.getY()+ " Color & fill style: " + this.getColor() + " " + this.getFillStyle();
 	}
 	
 }

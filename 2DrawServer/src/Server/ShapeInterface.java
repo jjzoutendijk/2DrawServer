@@ -1,5 +1,6 @@
 package Server;
 
+import java.awt.Color;
 import java.io.Serializable;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
@@ -10,5 +11,5 @@ public interface ShapeInterface extends Remote, Serializable  {
 	public void addShape(Shape S) throws RemoteException;
 	public ArrayList<Shape> getShapes() throws RemoteException;
 	public String getType(int i) throws RemoteException;
-	public String getColorString(int i) throws RemoteException;
+	public Color getColor(int i) throws RemoteException;
 }
