@@ -5,10 +5,22 @@ import java.io.Serializable;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+/**
+ * Shapes class implements the shape interface. 
+ * @author Jan Jaap Zoutendijk
+ *
+ */
 public class Shapes implements ShapeInterface, Serializable{
+	/* ------------------------------------------------------------------------------------------------------
+	 * Class Variables
+	 * ------------------------------------------------------------------------------------------------------
+	 */
 	private ArrayList<Shape> shapesList = new ArrayList<Shape>();
-
 	
+	/* ------------------------------------------------------------------------------------------------------
+	 * Class Methods
+	 * ------------------------------------------------------------------------------------------------------
+	 */
 	@Override
 	public void addShape(Shape s) throws RemoteException {
 		System.out.println("Info on received shape: "+ s.toString());
@@ -32,16 +44,5 @@ public class Shapes implements ShapeInterface, Serializable{
 		return shape.getColor();
 	}
 	
-	
-	
-	/*
-	public int getSize(){
-		return this.shapes.size();
-	}
-	
-	public void setShapes(ArrayList<Shape> shapes) {
-		this.shapes = shapes;
-	}
-	*/
 
 }

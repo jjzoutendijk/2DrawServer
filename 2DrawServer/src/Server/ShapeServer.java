@@ -9,12 +9,14 @@ import java.util.ArrayList;
 
 
 /**
+ * 
+ * Server for the 2Draw application. Prints the shape as soon as an application sents the information.
  * Run with the following VM arguments:
  * 
  * -Djava.security.policy=file:///C:\Users\Student\Documents\2DrawServer\2DrawServer\server.policy
  * -Djava.rmi.server.codebase=file:/C:\Users\Student\Documents\2DrawServer\2DrawServer\bin\
  * 
- * Policy files:
+ * Policy file:
  * grant {
  *    	permission java.security.AllPermission;
  *    };
@@ -22,18 +24,17 @@ import java.util.ArrayList;
  * Program for checking for RMI registry:
  * http://marxsoftware.blogspot.nl/2009/06/viewing-names-bound-to-rmi-registry.html
  * 
- * @author Student
+ * Start the rmi registry tool from the command line from the bin folder where the application codebase is located.
+ * 
+ * @author Jan Jaap Zoutendijk
  *
  */
 public class ShapeServer {
-	
-	private ArrayList<Shape> shapesList = new ArrayList<Shape>();
-	
-    public ShapeServer() {
-        super();
-    }
 
-
+	/* ------------------------------------------------------------------------------------------------------
+	 * Main Method for the application
+	 * ------------------------------------------------------------------------------------------------------
+	 */
     public static void main(String[] args) {
          if (System.getSecurityManager() == null) {
             System.setSecurityManager(new SecurityManager());
