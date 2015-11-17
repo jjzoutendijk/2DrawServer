@@ -18,7 +18,7 @@ public class Shapes implements ShapeInterface, Serializable{
 	private ArrayList<Shape> shapesList = new ArrayList<Shape>();
 	
 	/* ------------------------------------------------------------------------------------------------------
-	 * Class Methods
+	 * Class Variables
 	 * ------------------------------------------------------------------------------------------------------
 	 */
 	@Override

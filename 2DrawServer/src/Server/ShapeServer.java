@@ -41,6 +41,10 @@ public class ShapeServer {
         }
 	   try {
 		   Registry registry = LocateRegistry.getRegistry();
+		   Players players = new Players();
+		   PlayerInterface stubPlayer = (PlayerInterface) UnicastRemoteObject.exportObject(players, 3001);
+		   Naming.rebind("rmi://localhost/Players", players);
+		   
 		   Shapes Hello = new Shapes();	
            ShapeInterface stub = (ShapeInterface) UnicastRemoteObject.exportObject(Hello, 3001);
            Naming.rebind("rmi://localhost/Shapes", Hello);
@@ -48,6 +52,7 @@ public class ShapeServer {
 		   }catch (Exception e) {
 			   System.out.println("Shape Server failed: " + e);
 			   e.printStackTrace();
-			}
+		   }
     }
+    
 }
