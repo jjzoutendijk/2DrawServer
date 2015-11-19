@@ -4,13 +4,22 @@ import java.io.Serializable;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+/**
+ * This players class hold a arraylist with players. It implements the most important methods that must be performed on this 
+ * arraylist. Furthermore it implements the serializable and player interface to ensure it is functional with RMI.
+ * 
+ * @author Student
+ *
+ */
 public class Players implements PlayerInterface, Serializable {	
 	private ArrayList<Player> players = new ArrayList<Player>();
+	public static int playerNumber;
 
 	@Override
 	public void addPlayer(Player p) throws RemoteException {
 		players.add(p);
-		System.out.println("Added a player to the game: "+ p.toString());
+		System.out.println("Added a player to the game: "+ Players.playerNumber);
+		playerNumber++;
 	}
 	
 	@Override
