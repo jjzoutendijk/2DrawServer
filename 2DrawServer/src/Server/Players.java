@@ -9,8 +9,8 @@ public class Players implements PlayerInterface, Serializable {
 
 	@Override
 	public void addPlayer(Player p) throws RemoteException {
-		System.out.println("Added a player to the game: "+ p.toString());
 		players.add(p);
+		System.out.println("Added a player to the game: "+ p.toString());
 	}
 	
 	@Override
@@ -20,8 +20,10 @@ public class Players implements PlayerInterface, Serializable {
 
 
 	@Override
-	public void removePlayer(int i) throws RemoteException {
+	public void removePlayer(Player p) throws RemoteException {
+		int i = players.indexOf(p);
 		players.remove(i);
+		System.out.println("Removed player from the game: " + p.toString());
 	}
 
 	@Override

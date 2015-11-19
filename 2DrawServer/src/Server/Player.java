@@ -35,4 +35,14 @@ public class Player implements Serializable {
 		return "Player " + this.index;
 	}
 	
+	@Override
+	public boolean equals(Object p){
+		if( !(p instanceof Player)){
+			return false; 
+		}
+		else {
+			Player p1 = (Player) p;
+			return (p1.getIndex() == this.getIndex());
+		}
+	}
 }

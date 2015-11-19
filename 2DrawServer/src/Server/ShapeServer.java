@@ -48,9 +48,9 @@ public class ShapeServer {
 		   Shapes Hello = new Shapes();	
            ShapeInterface stub = (ShapeInterface) UnicastRemoteObject.exportObject(Hello, 3001);
            Naming.rebind("rmi://localhost/Shapes", Hello);
-		   System.out.println("Shape Server is ready.");
+		   System.out.println("2Draw Server is ready.");
 		   }catch (Exception e) {
-			   System.out.println("Shape Server failed: " + e);
+			   System.out.println("2Draw Server failed: " + e);
 			   e.printStackTrace();
 		   }
     }
