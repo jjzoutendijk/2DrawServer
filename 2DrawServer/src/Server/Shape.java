@@ -3,6 +3,17 @@ package Server;
 import java.awt.Color;
 import java.io.Serializable;
 
+import javax.persistence.DiscriminatorColumn;
+import javax.persistence.DiscriminatorType;
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+
+import org.hibernate.annotations.GenericGenerator;
+
 
 /**
  * This is an abstract superclass of the drawing shapes program
@@ -11,6 +22,11 @@ import java.io.Serializable;
  * @version 1.0
  * 
  */
+
+@Entity
+@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name="field",discriminatorType=DiscriminatorType.STRING)
+@DiscriminatorValue("dummy")
 public abstract class Shape implements Serializable {
 	/* ------------------------------------------------------------------------------------------------------
 	 * Class Variables
@@ -22,8 +38,10 @@ public abstract class Shape implements Serializable {
 	private String type;
 	private int height;
 	private int width;
+	private Long id;
 	
-	
+
+
 	/* ------------------------------------------------------------------------------------------------------
 	 * The Constructors
 	 * ------------------------------------------------------------------------------------------------------
@@ -44,6 +62,11 @@ public abstract class Shape implements Serializable {
 	 * Getters and setters
 	 * ------------------------------------------------------------------------------------------------------
 	 */
+
+	
+	public void setId(Long id) {
+		this.id = id;
+	}
 
 	public Color getColor() {
 		return color;
@@ -94,6 +117,8 @@ public abstract class Shape implements Serializable {
 	 * Class Methods
 	 * ------------------------------------------------------------------------------------------------------
 	 */
+
+	
 	public String printShape(){
 		return new String("x: " + this.x + "y: " + this.y + "style: " + this.fillStyle); 
 	}
@@ -120,5 +145,13 @@ public abstract class Shape implements Serializable {
 	public String toString(){
 		return "This shape is a: " + this.getType() + " at: " + this.getX() + "," +this.getY()+ " Color & fill style: " + this.getColor() + " " + this.getFillStyle();
 	}
+	
+    @Id
+    @GeneratedValue(generator="increment")
+    @GenericGenerator(name="increment", strategy = "increment")
+    public Long getId() {
+        return id;
+    }
+	
 	
 }

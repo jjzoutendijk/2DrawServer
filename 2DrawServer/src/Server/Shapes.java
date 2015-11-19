@@ -24,6 +24,12 @@ public class Shapes implements ShapeInterface, Serializable{
 	@Override
 	public void addShape(Shape s) throws RemoteException {
 		System.out.println("Info on received shape: "+ s.toString());
+		if(s.getType().equalsIgnoreCase("Circle")){
+			CircleDao.create(s.getX(), s.getY(), s.getWidth(), s.getHeight(), s.getFillStyle(), s.getColor(), s.getType());
+		}
+		else
+			SquareDao.create(s.getX(), s.getY(), s.getWidth(), s.getHeight(), s.getFillStyle(), s.getColor(), s.getType());
+
 		shapesList.add(s);
 	}
 	
